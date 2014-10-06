@@ -1,13 +1,13 @@
-function weights = learn_w(ts, d, t, lr)
+function weights = perceptron_training(ts, d, t, lr)
     weights = [0, 0, 0];
+    ts_rows = rows(ts);
+    ts_cols = columns(ts);
 
     while (true)
-        printf('---------------------------------\n')
         error_count = 0;
         out = zeros(4, 1);
 
-        for i = 1:4
-            disp(weights)
+        for i = 1:ts_rows
             result = dot(ts(i, :), weights);
             if (result > t)
                 out(i) = 1;
@@ -19,7 +19,7 @@ function weights = learn_w(ts, d, t, lr)
 
             if (delta ~= 0)
                 error_count += 1;
-                for j = 1:3
+                for j = 1:ts_cols
                     weights(j) = weights(j) + lr*delta*ts(i,j);
                 endfor
             endif
