@@ -1,6 +1,6 @@
 % Initialize values
 threshold = 0;
-learning_rate = 0.1;
+learning_rate = 0.;
 
 training_set = [1, 0, 0;
                 1, 0, 1;
